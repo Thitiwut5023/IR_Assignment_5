@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Engine</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Search with PageRank</h1>
+        <form action="/search_es_pr" method="GET">
+            <input type="text" name="query" class="search-box" placeholder="Enter search term..." required>
+            <div class="buttons">
+                <button type="submit" class="btn">Search</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
