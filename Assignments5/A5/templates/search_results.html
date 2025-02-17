@@ -5,37 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Results</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <!-- Header Section -->
         <div class="header">
-            <h1>Search Results for "{{ query }}"</h1>
-            <p>Total results: {{ total_hit }} found in {{ elapse|round(2) }} seconds.</p>
+            <h1>🔍 Search Results for "{{ query }}"</h1>
+            <p>Total results: <strong>{{ total_hit }}</strong> found in <strong>{{ elapse|round(2) }}</strong> seconds.</p>
         </div>
 
         <div class="results-section">
-            <!-- PageRank Results -->
             <div class="results-container">
-                <h2>PageRank Results</h2>
+                <h2>📌 PageRank Results</h2>
                 <div class="result-list">
                     {% for result in pr_results %}
                         <div class="result-item">
                             <h3><a href="{{ result.url }}" class="result-title">{{ result.title | safe }}</a></h3>
-                            <p class="text-snippet">{{ result.text | safe }}</p>
+                            <p class="text-snippet">{{ result.text[:150] | safe }}...</p>
                         </div>
                     {% endfor %}
                 </div>
             </div>
 
-            <!-- TF-IDF Results -->
             <div class="results-container">
-                <h2>TF-IDF Results</h2>
+                <h2>📊 TF-IDF Results</h2>
                 <div class="result-list">
                     {% for result in tfidf_results %}
                         <div class="result-item">
                             <h3><a href="{{ result.url }}" class="result-title">{{ result.title | safe }}</a></h3>
-                            <p class="text-snippet">{{ result.text | safe }}</p>
+                            <p class="text-snippet">{{ result.text[:150] | safe }}...</p>
                         </div>
                     {% endfor %}
                 </div>
